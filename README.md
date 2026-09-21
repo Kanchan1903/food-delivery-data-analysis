@@ -1,209 +1,84 @@
-Food Delivery Data Cleaning and Reporting Automation
+# 🍔 Food Delivery Data Cleaning & Analysis
 
-Project Overview
+## 📌 Project Overview
 
-This project focuses on cleaning, analyzing, and reporting a food
-delivery dataset using Python and Pandas. The objective is to identify
-missing values, standardize inconsistent data, check duplicates, convert
-data types, and generate useful visualizations.
+This project focuses on **data cleaning, exploratory data analysis (EDA), and reporting automation** using a food delivery dataset.
 
-Objectives
+The main objective is to clean raw food delivery data, handle missing and inconsistent values, convert data into appropriate formats, analyze delivery patterns, and create meaningful visualizations.
 
-Clean raw food delivery data
+---
 
-Handle missing values
+## 🎯 Objectives
 
-Remove inconsistencies in text columns
+- Clean and preprocess the raw dataset
+- Handle missing values
+- Standardize inconsistent text values
+- Convert columns into appropriate data types
+- Check and remove duplicate records
+- Perform exploratory data analysis
+- Analyze factors affecting delivery time
+- Generate visualizations
+- Export the cleaned dataset and summary report
 
-Convert numerical and date columns into suitable formats
+---
 
-Check duplicate records
+## 🛠️ Technologies Used
 
-Perform exploratory data analysis
+- **Python**
+- **Pandas**
+- **NumPy**
+- **Matplotlib**
+- **Seaborn**
+- **Google Colab**
+- **Git & GitHub**
 
-Generate visual reports
+---
 
-Export the cleaned dataset
+## 📊 Dataset Information
 
-Dataset Information
+The dataset contains information about food delivery orders, delivery partners, restaurants, weather, traffic, vehicles, and delivery time.
 
-Training records: 45,593
+### Dataset Statistics
 
-Original training columns: 20
+| Metric | Value |
+|---|---:|
+| Total Records | 45,593 |
+| Total Columns | 20 |
+| Missing Values After Cleaning | 0 |
+| Duplicate Records | 0 |
+| Average Delivery Time | 26.29 minutes |
+| Average Delivery Person Age | 29.58 years |
+| Average Delivery Rating | 4.64 |
 
-Target column: Time_taken(min)
+### Important Columns
 
-Dataset domain: Food delivery operations
+- `Delivery_person_ID`
+- `Delivery_person_Age`
+- `Delivery_person_Ratings`
+- `Restaurant_latitude`
+- `Restaurant_longitude`
+- `Delivery_location_latitude`
+- `Delivery_location_longitude`
+- `Order_Date`
+- `Time_Orderd`
+- `Time_Order_picked`
+- `Weatherconditions`
+- `Road_traffic_density`
+- `Vehicle_condition`
+- `Type_of_order`
+- `Type_of_vehicle`
+- `multiple_deliveries`
+- `Festival`
+- `City`
+- `Time_taken(min)`
 
-Technologies Used
+---
 
-Python
+# 🧹 Data Cleaning Process
 
-Google Colab
+## 1. Data Loading
 
-Pandas
+The raw CSV dataset was loaded using Pandas.
 
-NumPy
-
-Matplotlib
-
-Seaborn
-
-Data Cleaning Process
-
-1. Data Loading
-
-The dataset was loaded using Pandas from CSV files.
-
-2. Text Standardization
-
-Removed unnecessary leading and trailing spaces
-
-Standardized missing-value strings such as NaN
-
-Cleaned weather condition values by removing the conditions prefix
-
-3. Numerical Conversion
-
-The following columns were converted into numerical format:
-
-Delivery_person_Age
-
-Delivery_person_Ratings
-
-multiple_deliveries
-
-Time_taken(min)
-
-The numerical values were extracted from mixed-format strings where
-required.
-
-4. Missing Value Handling
-
-Missing values were handled using:
-
-Median imputation for numerical columns
-
-Unknown replacement for categorical columns
-
-After cleaning, all columns contained zero missing values.
-
-5. Duplicate Check
-
-The dataset was checked for duplicate records.
-
-Duplicate records found: 0
-
-6. Date Conversion
-
-The Order_Date column was converted into a proper datetime format
-using day-first parsing.
-
-7. Data Export
-
-The cleaned dataset was exported as:
-
-cleaned_food_delivery_data.csv
-
-Exploratory Data Analysis
-
-Dataset Summary
-
-Metric                                    Value
-
-Total records                            45,593
-Missing values after cleaning                 0
-Duplicate records                             0
-Average delivery time             26.29 minutes
-Average delivery person age         29.58 years
-Average delivery rating                    4.64
-
-Visualizations
-
-Delivery Time Distribution
-
-
-
-Delivery Time by Vehicle Type
-
-
-
-Average Delivery Time by Weather
-
-
-
-Average Delivery Time by Traffic Density
-
-
-
-Average Delivery Time by City
-
-
-
-Average Delivery Time by Order Type
-
-
-
-Average Delivery Time by Festival
-
-
-
-Average Delivery Time by Vehicle Condition
-
-
-
-Correlation Heatmap
-
-
-
-Key Findings
-
-The average delivery time in the dataset is approximately 26.29
-minutes.
-
-The dataset contained missing values in age, ratings, order time,
-traffic density, multiple deliveries, festival, and city fields.
-
-Missing values were handled successfully.
-
-No duplicate records were found.
-
-Delivery time was compared across weather conditions, traffic
-density, cities, order types, festival status, vehicle types, and
-vehicle condition.
-
-Numerical correlations were explored using a heatmap.
-
-Project Structure
-
-Food-Delivery-Data-Cleaning/
-│
-├── Data_Cleaning.ipynb
-├── cleaned_food_delivery_data.csv
-├── data_summary_report.csv
-│
-└── visualizations/
-    ├── delivery_time_distribution.png
-    ├── delivery_time_by_vehicle.png
-    ├── delivery_time_by_weather.png
-    ├── delivery_time_by_traffic.png
-    ├── delivery_time_by_city.png
-    ├── delivery_time_by_order_type.png
-    ├── delivery_time_by_festival.png
-    ├── delivery_time_by_vehicle_condition.png
-    └── correlation_heatmap.png
-
-Conclusion
-
-The food delivery dataset was successfully cleaned and analyzed using
-Python. Missing values were handled, inconsistent text values were
-standardized, numerical and date columns were converted, and duplicate
-records were checked. The generated visualizations provide insights into
-delivery time patterns across different operational factors.
-
-This project demonstrates practical skills in data cleaning, exploratory
-data analysis, visualization, and reporting automation.
-
-Author
-
-Kanchan Deshmukh
+```python
+train = pd.read_csv("train.csv")
